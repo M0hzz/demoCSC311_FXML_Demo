@@ -46,16 +46,7 @@ public class HelloController {
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public void onCalculateButtonClick(ActionEvent actionEvent) {
-        /*
-        int rateInput = Integer.parseInt(rate.getText());
-        int yearsInput = Integer.parseInt(years.getText());
-        int loanAmtInput = Integer.parseInt(loanAmt.getText());
-        int monthlyPayInput = Integer.parseInt(monthlyPay.getText());
-        int totalPayedInput = Integer.parseInt(totalPayed.getText());
-        int x = rateInput + yearsInput + loanAmtInput + monthlyPayInput + totalPayedInput;
-        welcomeText.setText(String.valueOf(x));
 
-         */
         rateInput = rateInput / 100;
 
         monthlyPay1 = ((loanAmtInput * (rateInput/12.0)) / (1 - (pow((1 + rateInput/12.0),(yearsInput * -12.0)))));
@@ -88,10 +79,10 @@ public class HelloController {
 
     public void monthlyPaymentEntered(ActionEvent actionEvent) {
 
-
+        //Not needed
     }
 
     public void totalEntered(ActionEvent actionEvent) {
-
+        //not needed
     }
 }
