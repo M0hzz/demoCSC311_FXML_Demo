@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+
+import static java.lang.Math.pow;
 
 public class HelloController {
 
@@ -21,7 +24,7 @@ public class HelloController {
     @FXML
     private TextField years;
     @FXML
-    private TextField loanAmt;
+    private TextField loanAmount;
     @FXML
     private TextField monthlyPay;
     @FXML
@@ -33,11 +36,11 @@ public class HelloController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
-    int rateInput;
-    int yearsInput;
-    int loanAmtInput;
-    int monthlyPayInput;
-    int totalPayedInput;
+    double rateInput;
+    double yearsInput;
+    double loanAmtInput = 1.0;
+    double monthlyPay1;
+    double totalPayed1;
     public void onCalculateButtonClick(ActionEvent actionEvent) {
         /*
         int rateInput = Integer.parseInt(rate.getText());
@@ -49,9 +52,16 @@ public class HelloController {
         welcomeText.setText(String.valueOf(x));
 
          */
+        rateInput = rateInput / 100;
+
+        welcomeText.setText(String.valueOf((loanAmtInput * (rateInput/12.0)) / (1 - (pow((1 + rateInput/12.0),(yearsInput * -12.0))))));
+                //((loanAmtInput * (rateInput/12)) / (1-(pow((1 + rateInput/12),(yearsInput * 12)))));
+
 
 
     }
+
+
 
     public void onBtn2Click(ActionEvent actionEvent) {
         welcomeText.setText("I'm Mehul");
@@ -59,19 +69,20 @@ public class HelloController {
 
 
     public void rateEntered(ActionEvent actionEvent) {
-        rateInput = Integer.parseInt(rate.getText());
+        rateInput = Double.parseDouble((rate.getText()));
     }
 
     public void yearsEntered(ActionEvent actionEvent) {
-        yearsInput = Integer.parseInt(years.getText());
+        yearsInput = Double.parseDouble(years.getText());
     }
 
     public void loanAmountEntered(ActionEvent actionEvent) {
-        loanAmtInput = Integer.parseInt(loanAmt.getText());
+        loanAmtInput = Double.parseDouble(loanAmount.getText());
+
     }
 
     public void monthlyPaymentEntered(ActionEvent actionEvent) {
-        monthlyPayInput = Integer.parseInt(monthlyPay.getText());
+
     }
 
     public void totalEntered(ActionEvent actionEvent) {
