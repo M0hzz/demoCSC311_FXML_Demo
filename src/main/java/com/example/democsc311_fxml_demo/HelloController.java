@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import static java.lang.Math.pow;
 
@@ -41,6 +43,8 @@ public class HelloController {
     double loanAmtInput = 1.0;
     double monthlyPay1;
     double totalPayed1;
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     public void onCalculateButtonClick(ActionEvent actionEvent) {
         /*
         int rateInput = Integer.parseInt(rate.getText());
@@ -56,10 +60,10 @@ public class HelloController {
 
         monthlyPay1 = ((loanAmtInput * (rateInput/12.0)) / (1 - (pow((1 + rateInput/12.0),(yearsInput * -12.0)))));
                 //((loanAmtInput * (rateInput/12)) / (1-(pow((1 + rateInput/12),(yearsInput * 12)))));
-        monthlyPayment.setText(String.valueOf(monthlyPay1));
+        monthlyPayment.setText(String.valueOf(df.format(monthlyPay1)));
 
         totalPayed1 = monthlyPay1 * 12 * yearsInput;
-        total.setText(String.valueOf(totalPayed1));
+        total.setText(String.valueOf(df.format(totalPayed1)));
     }
 
 
