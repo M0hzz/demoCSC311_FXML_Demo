@@ -26,9 +26,9 @@ public class HelloController {
     @FXML
     private TextField loanAmount;
     @FXML
-    private TextField monthlyPay;
+    private TextField monthlyPayment;
     @FXML
-    private TextField totalPayed;
+    private TextField total;
 
 
     @FXML
@@ -54,11 +54,12 @@ public class HelloController {
          */
         rateInput = rateInput / 100;
 
-        welcomeText.setText(String.valueOf((loanAmtInput * (rateInput/12.0)) / (1 - (pow((1 + rateInput/12.0),(yearsInput * -12.0))))));
+        monthlyPay1 = ((loanAmtInput * (rateInput/12.0)) / (1 - (pow((1 + rateInput/12.0),(yearsInput * -12.0)))));
                 //((loanAmtInput * (rateInput/12)) / (1-(pow((1 + rateInput/12),(yearsInput * 12)))));
+        monthlyPayment.setText(String.valueOf(monthlyPay1));
 
-
-
+        totalPayed1 = monthlyPay1 * 12 * yearsInput;
+        total.setText(String.valueOf(totalPayed1));
     }
 
 
@@ -82,6 +83,7 @@ public class HelloController {
     }
 
     public void monthlyPaymentEntered(ActionEvent actionEvent) {
+
 
     }
 
